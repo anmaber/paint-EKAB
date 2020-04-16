@@ -31,6 +31,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "paintIntro.h"
+#include "../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_ts.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +57,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+void ts_config(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -71,7 +72,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+ static TS_StateTypeDef ts_struct;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -101,12 +102,18 @@ int main(void)
   /* USER CODE BEGIN 2 */
   initLCD();
   printHelloScreen();
+ 	ts_config();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+   		BSP_TS_GetState(&ts_struct);
+     if(ts_struct.TouchDetected)
+     {
+        	BSP_LCD_FillCircle(ts_struct.X, ts_struct.Y, 5);
+     }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -172,7 +179,16 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void ts_config(void)
+{
+	BSP_LCD_Clear(LCD_COLOR_WHITE);
 
+	if(BSP_TS_Init(1000, 1000) == TS_OK)
+	{
+		BSP_LCD_Clear(LCD_COLOR_WHITE);
+  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	}
+}
 /* USER CODE END 4 */
 
  /**
