@@ -46,6 +46,9 @@ void showPaintInterface()
 	BSP_LCD_FillRect(5, 250, 30, 30);
 	BSP_LCD_SetTextColor(LCD_COLOR_MAGENTA);
 	BSP_LCD_FillRect(5, 288, 30, 30);
+
+	markdown(LastColorMarkdownX, LastColorMArkdownY, COLOR);
+	markdown(LastThicknessMarkdownX, LastThicknessMArkdownY, THICKNESS);
 }
 
 void paintService()
@@ -59,7 +62,7 @@ void paintService()
 		}
 		else if(ts_struct.TouchDetected && (ts_struct.Y > 22) && (ts_struct.Y < 52) && (ts_struct.X <35))
 		{
-			//freshScreen
+			clearWorkspace();
 		}
 		else if(ts_struct.TouchDetected && (ts_struct.Y > 60) && (ts_struct.Y < 90))
 		{
@@ -158,6 +161,13 @@ void markdown(uint16_t x,uint16_t y,Markdown_type type)
 	}
 	BSP_LCD_SetTextColor(LCD_COLOR_RED);
 	BSP_LCD_DrawRect(x, y, 34, 34);
-	BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
 }
+
+void clearWorkspace(void)
+{
+	BSP_LCD_Clear(LCD_COLOR_WHITE);
+	showPaintInterface();
+	BSP_LCD_SetTextColor(LastColor);
+}
+
 

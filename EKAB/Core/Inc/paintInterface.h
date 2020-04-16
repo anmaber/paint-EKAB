@@ -23,5 +23,6 @@ void paintService();
 void resetColorMarkdown(void);
 void resetThicknessMarkdown(void);
 void markdown(uint16_t x,uint16_t y,Markdown_type type);
+void clearWorkspace(void);
 
 #endif /* INC_PAINTINTERFACE_H_ */
