@@ -19,11 +19,11 @@ void configTS(void)
 	}
 }
 
-void paint(void)
-{
-	BSP_TS_GetState(&ts_struct);
-	if(ts_struct.TouchDetected)
-	{
-		BSP_LCD_FillCircle(ts_struct.X, ts_struct.Y, 5);
-	}
-}
+//void paint(void)
+//{
+//	BSP_TS_GetState(&ts_struct);
+//	if(ts_struct.TouchDetected)
+//	{
+//		BSP_LCD_FillCircle(ts_struct.X, ts_struct.Y, 5);
+//	}
+//}

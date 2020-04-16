@@ -31,9 +31,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "paintIntro.h"
-#include "paint.h"
 #include "paintInterface.h"
-#include "../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h"
+//#include "../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -112,7 +111,7 @@ int main(void)
 	/* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		paint();
+		paintService();
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */

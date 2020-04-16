@@ -5,7 +5,10 @@
  *      Author: berna
  */
 
-#include "../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h"
+#include "paintInterface.h"
+
+uint32_t LastColor = LCD_COLOR_BLACK;
+uint16_t LastRadius = 5;
 
 void showPaintInterface()
 {
@@ -39,4 +42,77 @@ void showPaintInterface()
 	BSP_LCD_FillRect(5, 250, 30, 30);
 	BSP_LCD_SetTextColor(LCD_COLOR_MAGENTA);
 	BSP_LCD_FillRect(5, 288, 30, 30);
+}
+
+void paintService()
+{
+	BSP_TS_GetState(&ts_struct);
+	if(ts_struct.TouchDetected && ts_struct.X < 240-LastRadius){
+		if(ts_struct.TouchDetected && ts_struct.X > 37 + LastRadius && ts_struct.Y > 37+LastRadius)
+		{
+			BSP_LCD_SetTextColor(LastColor);
+			BSP_LCD_FillCircle(ts_struct.X, ts_struct.Y, LastRadius);
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.Y > 22) && (ts_struct.Y < 52) && (ts_struct.X <35))
+		{
+			//freshScreen
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.Y > 60) && (ts_struct.Y < 90))
+		{
+			//markdown(3, 58, COLOR);
+			LastColor = LCD_COLOR_WHITE;
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.Y > 98) && (ts_struct.Y < 128))
+		{
+			//markdown(3, 96, COLOR);
+			LastColor = LCD_COLOR_BLACK;
+
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.Y > 136) && (ts_struct.Y < 166))
+		{
+			//markdown(3, 134, COLOR);
+			LastColor = LCD_COLOR_YELLOW;
+
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.Y > 174) && (ts_struct.Y < 204))
+		{
+			//markdown(3, 172, COLOR);
+			LastColor = LCD_COLOR_RED;
+
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.Y > 212) && (ts_struct.Y < 242))
+		{
+			//markdown(3, 210, COLOR);
+			LastColor = LCD_COLOR_BLUE;
+
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.Y > 250) && (ts_struct.Y < 280))
+		{
+			//markdown(3, 248, COLOR);
+			LastColor = LCD_COLOR_GREEN;
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.Y > 288) && (ts_struct.Y < 318))
+		{
+			//markdown(3, 286, COLOR);
+			LastColor = LCD_COLOR_MAGENTA;
+
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.X > 55) && (ts_struct.X < 85))
+		{
+			LastRadius = 5;
+			//markdown(53, 3, THICKNESS);
+
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.X > 93) && (ts_struct.X < 123))
+		{
+			LastRadius = 10;
+			//markdown(91, 3, THICKNESS);
+		}
+		else if(ts_struct.TouchDetected && (ts_struct.X > 131) && (ts_struct.X < 161))
+		{
+			LastRadius = 15;
+			//markdown(129, 3, THICKNESS);
+		}
+	}
+
 }
