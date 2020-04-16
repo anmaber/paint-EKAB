@@ -4,6 +4,8 @@
 "Core/Src/i2c.o"
 "Core/Src/ltdc.o"
 "Core/Src/main.o"
+"Core/Src/paint.o"
+"Core/Src/paintInterface.o"
 "Core/Src/paintIntro.o"
 "Core/Src/spi.o"
 "Core/Src/stm32f4xx_hal_msp.o"

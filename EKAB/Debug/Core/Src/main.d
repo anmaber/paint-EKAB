@@ -37,7 +37,20 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/dma2d.h ../Core/Inc/main.h ../Core/Inc/i2c.h \
  ../Core/Inc/ltdc.h ../Core/Inc/spi.h ../Core/Inc/usart.h \
- ../Core/Inc/gpio.h ../Core/Inc/fmc.h ../Core/Inc/paintIntro.h
+ ../Core/Inc/gpio.h ../Core/Inc/fmc.h ../Core/Inc/paintIntro.h \
+ ../Core/Inc/paint.h \
+ ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_ts.h \
+ ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery.h \
+ ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/stmpe811.h \
+ ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/../Common/ts.h \
+ ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/../Common/io.h \
+ ../Core/Inc/paintInterface.h \
+ ../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h \
+ ../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery.h \
+ ../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_sdram.h \
+ ../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/../../../Utilities/Fonts/fonts.h \
+ ../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/ili9341.h \
+ ../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/../Common/lcd.h
 
 ../Core/Inc/main.h:
 
@@ -130,3 +143,29 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/fmc.h:
 
 ../Core/Inc/paintIntro.h:
+
+../Core/Inc/paint.h:
+
+../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_ts.h:
+
+../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery.h:
+
+../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/stmpe811.h:
+
+../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/../Common/ts.h:
+
+../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/../Common/io.h:
+
+../Core/Inc/paintInterface.h:
+
+../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h:
+
+../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery.h:
+
+../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_sdram.h:
+
+../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/../../../Utilities/Fonts/fonts.h:
+
+../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/ili9341.h:
+
+../Core/Src/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/../Common/lcd.h:
