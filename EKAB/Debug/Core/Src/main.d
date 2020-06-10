@@ -42,14 +42,14 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h \
  ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery.h \
  ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_sdram.h \
- ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../../../Utilities/Fonts/fonts.h \
- ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/ili9341.h \
- ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/../Common/lcd.h \
+ d:\studia\semestr_6\sr\paint-ekab\ekab\utilities\fonts\fonts.h \
+ d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\ili9341\ili9341.h \
+ d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\lcd.h \
  ../Core/Inc/paint.h \
  ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_ts.h \
- ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/stmpe811.h \
- ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/../Common/ts.h \
- ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/../Common/io.h
+ d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\stmpe811\stmpe811.h \
+ d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\ts.h \
+ d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\io.h
 
 ../Core/Inc/main.h:
 
@@ -151,18 +151,18 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_sdram.h:
 
-../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../../../Utilities/Fonts/fonts.h:
+d:\studia\semestr_6\sr\paint-ekab\ekab\utilities\fonts\fonts.h:
 
-../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/ili9341.h:
+d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\ili9341\ili9341.h:
 
-../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/../Common/lcd.h:
+d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\lcd.h:
 
 ../Core/Inc/paint.h:
 
 ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_ts.h:
 
-../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/stmpe811.h:
+d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\stmpe811\stmpe811.h:
 
-../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/../Common/ts.h:
+d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\ts.h:
 
-../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/../Common/io.h:
+d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\io.h:

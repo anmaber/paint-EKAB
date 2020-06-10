@@ -61,8 +61,8 @@ EKAB.bin \
 all: EKAB.elf secondary-outputs
 
 # Tool invocations
-EKAB.elf: $(OBJS) $(USER_OBJS) C:\Users\berna\STM32CubeIDE\workspace_1.3.0\paint-EKAB\EKAB\STM32F429ZITX_FLASH.ld
-	arm-none-eabi-gcc -o "EKAB.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\berna\STM32CubeIDE\workspace_1.3.0\paint-EKAB\EKAB\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EKAB.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+EKAB.elf: $(OBJS) $(USER_OBJS) D:\Studia\Semestr_6\sr\paint-EKAB\EKAB\STM32F429ZITX_FLASH.ld
+	arm-none-eabi-gcc -o "EKAB.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Studia\Semestr_6\sr\paint-EKAB\EKAB\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EKAB.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
