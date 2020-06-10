@@ -30,8 +30,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "chooseViewStructure.h"
 #include "paintIntro.h"
 #include "paintInterface.h"
+#include "chooseCanvaInterface.h"
 //#include "../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h"
 /* USER CODE END Includes */
 
@@ -104,14 +106,34 @@ int main(void)
 	initLCD();
 	printHelloScreen();
 	configTS();
-	showPaintInterface();
+	showChooseCanvaInterface();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		paintService();
+
+		switch(activeView)
+		{
+		case Canvas1:
+			paintService('1');
+			break;
+		case Canvas2:
+			paintService('2');
+			break;
+		case ChooseScreen:
+			showChooseCanvaInterface();
+			choose();
+			break;
+		case Info:
+			serviceInfoScreen();
+			break;
+		default:
+			break;
+
+		}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -6,6 +6,7 @@
  */
 
 #include "paintInterface.h"
+#include "chooseViewStructure.h"
 
 uint32_t LastColor = LCD_COLOR_BLACK;
 uint16_t LastRadius = 5;
@@ -14,9 +15,15 @@ uint16_t LastColorMArkdownY = 96;
 uint16_t LastThicknessMarkdownX = 53;
 uint16_t LastThicknessMArkdownY = 3;
 
-void showPaintInterface()
+void showPaintInterface(uint8_t canvas)
 {
 	BSP_LCD_Clear(LCD_COLOR_WHITE);
+
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	BSP_LCD_SetFont(&Font16);
+	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+	BSP_LCD_DisplayChar(9, 5, '#');
+	BSP_LCD_DisplayChar(20,5, canvas);
 
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DrawRect(55, 5, 30, 30);
@@ -51,77 +58,91 @@ void showPaintInterface()
 	markdown(LastThicknessMarkdownX, LastThicknessMArkdownY, THICKNESS);
 }
 
-void paintService()
+void paintService(uint8_t canvas)
 {
-	BSP_TS_GetState(&ts_struct);
-	if(ts_struct.TouchDetected && ts_struct.X < 240-LastRadius){
-		if(ts_struct.TouchDetected && ts_struct.X > 37 + LastRadius && ts_struct.Y > 37+LastRadius)
-		{
-			BSP_LCD_SetTextColor(LastColor);
-			BSP_LCD_FillCircle(ts_struct.X, ts_struct.Y, LastRadius);
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.Y > 22) && (ts_struct.Y < 52) && (ts_struct.X <35))
-		{
-			clearWorkspace();
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.Y > 60) && (ts_struct.Y < 90))
-		{
-			markdown(3, 58, COLOR);
-			LastColor = LCD_COLOR_WHITE;
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.Y > 98) && (ts_struct.Y < 128))
-		{
-			markdown(3, 96, COLOR);
-			LastColor = LCD_COLOR_BLACK;
+	clearWorkspace(canvas);
+	while(activeView == Canvas1 || activeView == Canvas2)
+	{
+		BSP_TS_GetState(&ts_struct);
+		if(ts_struct.TouchDetected && ts_struct.X < 240-LastRadius){
+			if(ts_struct.TouchDetected && ts_struct.X > 37 + LastRadius && ts_struct.Y > 37+LastRadius)
+			{
+				BSP_LCD_SetTextColor(LastColor);
+				BSP_LCD_FillCircle(ts_struct.X, ts_struct.Y, LastRadius);
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.X > 164) && (ts_struct.Y < 35) && (ts_struct.X <238))
+			{
+				LastColor = LCD_COLOR_BLACK;
+				LastRadius = 5;
+				LastColorMarkdownX = 3;
+				LastColorMArkdownY = 96;
+				LastThicknessMarkdownX = 53;
+				LastThicknessMArkdownY = 3;
 
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.Y > 136) && (ts_struct.Y < 166))
-		{
-			markdown(3, 134, COLOR);
-			LastColor = LCD_COLOR_YELLOW;
+				activeView = ChooseScreen;
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.Y > 22) && (ts_struct.Y < 52) && (ts_struct.X <35))
+			{
+				clearWorkspace(canvas);
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.Y > 60) && (ts_struct.Y < 90))
+			{
+				markdown(3, 58, COLOR);
+				LastColor = LCD_COLOR_WHITE;
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.Y > 98) && (ts_struct.Y < 128))
+			{
+				markdown(3, 96, COLOR);
+				LastColor = LCD_COLOR_BLACK;
 
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.Y > 174) && (ts_struct.Y < 204))
-		{
-			markdown(3, 172, COLOR);
-			LastColor = LCD_COLOR_RED;
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.Y > 136) && (ts_struct.Y < 166))
+			{
+				markdown(3, 134, COLOR);
+				LastColor = LCD_COLOR_YELLOW;
 
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.Y > 212) && (ts_struct.Y < 242))
-		{
-			markdown(3, 210, COLOR);
-			LastColor = LCD_COLOR_BLUE;
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.Y > 174) && (ts_struct.Y < 204))
+			{
+				markdown(3, 172, COLOR);
+				LastColor = LCD_COLOR_RED;
 
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.Y > 250) && (ts_struct.Y < 280))
-		{
-			markdown(3, 248, COLOR);
-			LastColor = LCD_COLOR_GREEN;
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.Y > 288) && (ts_struct.Y < 318))
-		{
-			markdown(3, 286, COLOR);
-			LastColor = LCD_COLOR_MAGENTA;
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.Y > 212) && (ts_struct.Y < 242))
+			{
+				markdown(3, 210, COLOR);
+				LastColor = LCD_COLOR_BLUE;
 
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.X > 55) && (ts_struct.X < 85))
-		{
-			LastRadius = 5;
-			markdown(53, 3, THICKNESS);
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.Y > 250) && (ts_struct.Y < 280))
+			{
+				markdown(3, 248, COLOR);
+				LastColor = LCD_COLOR_GREEN;
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.Y > 288) && (ts_struct.Y < 318))
+			{
+				markdown(3, 286, COLOR);
+				LastColor = LCD_COLOR_MAGENTA;
 
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.X > 93) && (ts_struct.X < 123))
-		{
-			LastRadius = 10;
-			markdown(91, 3, THICKNESS);
-		}
-		else if(ts_struct.TouchDetected && (ts_struct.X > 131) && (ts_struct.X < 161))
-		{
-			LastRadius = 15;
-			markdown(129, 3, THICKNESS);
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.X > 55) && (ts_struct.X < 85))
+			{
+				LastRadius = 5;
+				markdown(53, 3, THICKNESS);
+
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.X > 93) && (ts_struct.X < 123))
+			{
+				LastRadius = 10;
+				markdown(91, 3, THICKNESS);
+			}
+			else if(ts_struct.TouchDetected && (ts_struct.X > 131) && (ts_struct.X < 161))
+			{
+				LastRadius = 15;
+				markdown(129, 3, THICKNESS);
+			}
 		}
 	}
-
 }
 
 void resetColorMarkdown(void)
@@ -163,10 +184,10 @@ void markdown(uint16_t x,uint16_t y,Markdown_type type)
 	BSP_LCD_DrawRect(x, y, 34, 34);
 }
 
-void clearWorkspace(void)
+void clearWorkspace(uint8_t canvas)
 {
 	BSP_LCD_Clear(LCD_COLOR_WHITE);
-	showPaintInterface();
+	showPaintInterface(canvas);
 	BSP_LCD_SetTextColor(LastColor);
 }
 

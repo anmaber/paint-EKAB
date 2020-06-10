@@ -18,11 +18,11 @@ typedef enum
 
 }Markdown_type;
 
-void showPaintInterface();
-void paintService();
+void showPaintInterface(uint8_t canvas);
+void paintService(uint8_t canvas);
 void resetColorMarkdown(void);
 void resetThicknessMarkdown(void);
 void markdown(uint16_t x,uint16_t y,Markdown_type type);
-void clearWorkspace(void);
+void clearWorkspace(uint8_t canvas);
 
 #endif /* INC_PAINTINTERFACE_H_ */
