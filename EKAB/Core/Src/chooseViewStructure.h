@@ -1,8 +1,8 @@
 /*
  * chooseViewStructure.h
  *
- *  Created on: 10 cze 2020
- *      Author: ekalinsk
+ *  Created on: 22 kwi 2020
+ *      Author: berna
  */
 
 #ifndef SRC_CHOOSEVIEWSTRUCTURE_H_

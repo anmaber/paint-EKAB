@@ -8,6 +8,10 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Drivers/BSP/STM32F429I-Discovery/subdir.mk
 -include Drivers/BSP/Components/wm8994/subdir.mk
@@ -61,8 +65,8 @@ EKAB.bin \
 all: EKAB.elf secondary-outputs
 
 # Tool invocations
-EKAB.elf: $(OBJS) $(USER_OBJS) D:\Studia\Semestr_6\sr\paint-EKAB\EKAB\STM32F429ZITX_FLASH.ld
-	arm-none-eabi-gcc -o "EKAB.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Studia\Semestr_6\sr\paint-EKAB\EKAB\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EKAB.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+EKAB.elf: $(OBJS) $(USER_OBJS) C:\Users\kalin\STM32CubeIDE\workspace_1.3.0\EKAB\STM32F429ZITX_FLASH.ld
+	arm-none-eabi-gcc -o "EKAB.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kalin\STM32CubeIDE\workspace_1.3.0\EKAB\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EKAB.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

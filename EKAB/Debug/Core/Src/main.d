@@ -35,21 +35,32 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ ../Core/Inc/FreeRTOSConfig.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  ../Core/Inc/dma2d.h ../Core/Inc/main.h ../Core/Inc/i2c.h \
  ../Core/Inc/ltdc.h ../Core/Inc/spi.h ../Core/Inc/usart.h \
- ../Core/Inc/gpio.h ../Core/Inc/fmc.h ../Core/Inc/chooseViewStructure.h \
+ ../Core/Inc/gpio.h ../Core/Inc/fmc.h ../Core/Src/chooseViewStructure.h \
  ../Core/Inc/paintIntro.h ../Core/Inc/paintInterface.h \
  ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h \
  ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery.h \
  ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_sdram.h \
- d:\studia\semestr_6\sr\paint-ekab\ekab\utilities\fonts\fonts.h \
- d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\ili9341\ili9341.h \
- d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\lcd.h \
+ c:\users\kalin\stm32cubeide\workspace_1.3.0\ekab\utilities\fonts\fonts.h \
+ ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/ili9341.h \
+ c:\users\kalin\stm32cubeide\workspace_1.3.0\ekab\drivers\bsp\components\common\lcd.h \
  ../Core/Inc/paint.h \
  ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_ts.h \
- d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\stmpe811\stmpe811.h \
- d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\ts.h \
- d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\io.h \
+ ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/stmpe811.h \
+ c:\users\kalin\stm32cubeide\workspace_1.3.0\ekab\drivers\bsp\components\common\ts.h \
+ c:\users\kalin\stm32cubeide\workspace_1.3.0\ekab\drivers\bsp\components\common\io.h \
  ../Core/Inc/chooseCanvaInterface.h
 
 ../Core/Inc/main.h:
@@ -126,6 +137,28 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+
+../Core/Inc/FreeRTOSConfig.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
+
 ../Core/Inc/dma2d.h:
 
 ../Core/Inc/main.h:
@@ -142,7 +175,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Core/Inc/fmc.h:
 
-../Core/Inc/chooseViewStructure.h:
+../Core/Src/chooseViewStructure.h:
 
 ../Core/Inc/paintIntro.h:
 
@@ -154,20 +187,20 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_sdram.h:
 
-d:\studia\semestr_6\sr\paint-ekab\ekab\utilities\fonts\fonts.h:
+c:\users\kalin\stm32cubeide\workspace_1.3.0\ekab\utilities\fonts\fonts.h:
 
-d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\ili9341\ili9341.h:
+../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/ili9341/ili9341.h:
 
-d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\lcd.h:
+c:\users\kalin\stm32cubeide\workspace_1.3.0\ekab\drivers\bsp\components\common\lcd.h:
 
 ../Core/Inc/paint.h:
 
 ../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_ts.h:
 
-d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\stmpe811\stmpe811.h:
+../Core/Inc/../../Drivers/BSP/STM32F429I-Discovery/../Components/stmpe811/stmpe811.h:
 
-d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\ts.h:
+c:\users\kalin\stm32cubeide\workspace_1.3.0\ekab\drivers\bsp\components\common\ts.h:
 
-d:\studia\semestr_6\sr\paint-ekab\ekab\drivers\bsp\components\common\io.h:
+c:\users\kalin\stm32cubeide\workspace_1.3.0\ekab\drivers\bsp\components\common\io.h:
 
 ../Core/Inc/chooseCanvaInterface.h:

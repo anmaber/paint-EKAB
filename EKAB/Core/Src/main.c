@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "dma2d.h"
 #include "i2c.h"
 #include "ltdc.h"
@@ -34,6 +35,7 @@
 #include "paintIntro.h"
 #include "paintInterface.h"
 #include "chooseCanvaInterface.h"
+
 //#include "../../Drivers/BSP/STM32F429I-Discovery/stm32f429i_discovery_lcd.h"
 /* USER CODE END Includes */
 
@@ -59,6 +61,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -107,33 +110,21 @@ int main(void)
 	printHelloScreen();
 	configTS();
 	showChooseCanvaInterface();
-
+	//showPaintInterface();
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
+  MX_FREERTOS_Init(); 
+  /* Start scheduler */
+  osKernelStart();
+ 
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
 
-		switch(activeView)
-		{
-		case Canvas1:
-			paintService('1');
-			break;
-		case Canvas2:
-			paintService('2');
-			break;
-		case ChooseScreen:
-			showChooseCanvaInterface();
-			choose();
-			break;
-		case Info:
-			serviceInfoScreen();
-			break;
-		default:
-			break;
-
-		}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
