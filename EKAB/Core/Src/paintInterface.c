@@ -7,6 +7,7 @@
 
 #include "paintInterface.h"
 #include "chooseViewStructure.h"
+#include "save.h"
 
 uint32_t LastColor = LCD_COLOR_BLACK;
 uint16_t LastRadius = 5;
@@ -61,6 +62,8 @@ void showPaintInterface(uint8_t canvas)
 void paintService(uint8_t canvas)
 {
 	clearWorkspace(canvas);
+	loadP();
+
 	while(activeView == Canvas1 || activeView == Canvas2)
 	{
 		BSP_TS_GetState(&ts_struct);
@@ -79,6 +82,7 @@ void paintService(uint8_t canvas)
 				LastThicknessMarkdownX = 53;
 				LastThicknessMArkdownY = 3;
 
+				saveP();
 				activeView = ChooseScreen;
 			}
 			else if(ts_struct.TouchDetected && (ts_struct.Y > 22) && (ts_struct.Y < 52) && (ts_struct.X <35))
@@ -191,4 +195,42 @@ void clearWorkspace(uint8_t canvas)
 	BSP_LCD_SetTextColor(LastColor);
 }
 
+void saveP()
+{
+	uint32_t bottomHalf[28482];
+	uint16_t i;
+	uint16_t j;
+	int bufferIter = 0;
+	for(i=38 ; i < 240; ++i)
+	{
+		for(j=179; j < 320; ++j)
+		{
+			if(bufferIter > 28481) break;
+			bottomHalf[bufferIter] = BSP_LCD_ReadPixel(i, j);
+			bufferIter++;
+		}
+	}
+
+	SetSectorAddr(11,0x080E0000);
+	WriteToFlash(0, bottomHalf,28482);
+}
+
+void loadP()
+{
+	uint32_t bottomHalf[28482];
+	SetSectorAddr(11,0x080E0000);
+	ReadFromFlash(0, bottomHalf,28482);
+	uint16_t i;
+	uint16_t j;
+	int bufferIter = 0;
+	for(i=38 ; i < 240; ++i)
+	{
+		for(j=179; j < 320; ++j)
+		{
+			if(bufferIter> 28481) break;
+			BSP_LCD_DrawPixel(i, j, bottomHalf[bufferIter]);
+			bufferIter++;
+		}
+	}
+}
 

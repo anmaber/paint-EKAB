@@ -24,5 +24,7 @@ void resetColorMarkdown(void);
 void resetThicknessMarkdown(void);
 void markdown(uint16_t x,uint16_t y,Markdown_type type);
 void clearWorkspace(uint8_t canvas);
+void loadP();
+void saveP();
 
 #endif /* INC_PAINTINTERFACE_H_ */
