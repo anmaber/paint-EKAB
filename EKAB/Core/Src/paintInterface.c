@@ -62,8 +62,18 @@ void showPaintInterface(uint8_t canvas)
 void paintService(uint8_t canvas)
 {
 	clearWorkspace(canvas);
-	loadP();
+	if(activeView == Canvas1)
+	{
+		loadPartOfSketch(10, 0x080C0000, 38, 38);
+		loadPartOfSketch(11, 0x080E0000, 38, 179);
+	}
+	else
+	{
+		loadPartOfSketch(8, 0x08080000, 38, 38);
+		loadPartOfSketch(9, 0x080A0000, 38, 179);
+	}
 
+	HAL_Delay(500);
 	while(activeView == Canvas1 || activeView == Canvas2)
 	{
 		BSP_TS_GetState(&ts_struct);
@@ -82,7 +92,16 @@ void paintService(uint8_t canvas)
 				LastThicknessMarkdownX = 53;
 				LastThicknessMArkdownY = 3;
 
-				saveP();
+				if(activeView == Canvas1)
+				{
+					savePartOfSketch(10, 0x080C0000, 38, 38);
+					savePartOfSketch(11, 0x080E0000, 38, 179);
+				}
+				else
+				{
+					savePartOfSketch(8, 0x08080000, 38, 38);
+					savePartOfSketch(9, 0x080A0000, 38, 179);
+				}
 				activeView = ChooseScreen;
 			}
 			else if(ts_struct.TouchDetected && (ts_struct.Y > 22) && (ts_struct.Y < 52) && (ts_struct.X <35))
@@ -195,40 +214,40 @@ void clearWorkspace(uint8_t canvas)
 	BSP_LCD_SetTextColor(LastColor);
 }
 
-void saveP()
+void savePartOfSketch(uint8_t sector, uint32_t addrs,int startX,int startY)
 {
-	uint32_t bottomHalf[28482];
+	uint32_t buff[28482];
 	uint16_t i;
 	uint16_t j;
 	int bufferIter = 0;
-	for(i=38 ; i < 240; ++i)
+	for(i=startX ; i < 240; ++i)
 	{
-		for(j=179; j < 320; ++j)
+		for(j=startY; j < startY+141; ++j)
 		{
 			if(bufferIter > 28481) break;
-			bottomHalf[bufferIter] = BSP_LCD_ReadPixel(i, j);
+			buff[bufferIter] = BSP_LCD_ReadPixel(i, j);
 			bufferIter++;
 		}
 	}
 
-	SetSectorAddr(11,0x080E0000);
-	WriteToFlash(0, bottomHalf,28482);
+	SetSectorAddr(sector,addrs);
+	WriteToFlash(0, buff,28482);
 }
 
-void loadP()
+void loadPartOfSketch(uint8_t sector, uint32_t addrs,int startX,int startY)
 {
-	uint32_t bottomHalf[28482];
-	SetSectorAddr(11,0x080E0000);
-	ReadFromFlash(0, bottomHalf,28482);
+	uint32_t buff[28482];
+	SetSectorAddr(sector,addrs);
+	ReadFromFlash(0, buff,28482);
 	uint16_t i;
 	uint16_t j;
 	int bufferIter = 0;
-	for(i=38 ; i < 240; ++i)
+	for(i=startX ; i < 240; ++i)
 	{
-		for(j=179; j < 320; ++j)
+		for(j=startY; j < startY+141; ++j)
 		{
 			if(bufferIter> 28481) break;
-			BSP_LCD_DrawPixel(i, j, bottomHalf[bufferIter]);
+			BSP_LCD_DrawPixel(i, j, buff[bufferIter]);
 			bufferIter++;
 		}
 	}
